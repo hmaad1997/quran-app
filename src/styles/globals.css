@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-navy font-sans text-slate-100 antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 10% -10%, rgba(0, 112, 243, 0.18), transparent 60%),
+      radial-gradient(800px 500px at 110% 10%, rgba(0, 112, 243, 0.08), transparent 60%),
+      linear-gradient(180deg, #0A192F 0%, #040B1A 100%);
+    background-attachment: fixed;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 112, 243, 0.25);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 112, 243, 0.45);
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] border border-white/10 backdrop-blur-xl rounded-2xl;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 20px 60px -20px rgba(0, 0, 0, 0.6);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl
+           bg-electric px-4 py-2.5 text-sm font-semibold text-white
+           shadow-glow-sm transition
+           hover:bg-electric-600 active:scale-[0.98]
+           disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl
+           border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm
+           font-medium text-slate-200 transition hover:bg-white/[0.08];
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-white/10 bg-white/[0.04]
+           px-4 py-3 text-sm text-slate-100 placeholder:text-slate-500
+           outline-none transition focus:border-electric/60 focus:bg-white/[0.06]
+           focus:ring-2 focus:ring-electric/30;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border
+           px-2.5 py-1 text-xs font-medium;
+  }
+}
