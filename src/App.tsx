@@ -10,6 +10,7 @@ import { ProtectedRoute } from '@/components/layout/ProtectedRoute';
 import { LocationProvider } from '@/providers/LocationProvider';
 import { AdminDashboard } from '@/pages/AdminDashboard';
 import { EmployeeDashboard } from '@/pages/EmployeeDashboard';
+import { LandingPage } from '@/pages/Landing';
 import { LoginPage } from '@/pages/Login';
 import { SignupPage } from '@/pages/Signup';
 import { useAuthStore } from '@/store/authStore';
@@ -31,9 +32,12 @@ export function App(): JSX.Element {
     <BrowserRouter>
       <LocationProvider>
         <Routes>
+          {/* Public routes */}
+          <Route path="/preview" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
 
+          {/* Protected app shell */}
           <Route
             element={
               <ProtectedRoute>
@@ -52,7 +56,7 @@ export function App(): JSX.Element {
             />
           </Route>
 
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/preview" replace />} />
         </Routes>
       </LocationProvider>
     </BrowserRouter>
